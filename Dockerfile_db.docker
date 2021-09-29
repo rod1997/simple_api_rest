@@ -1,0 +1,6 @@
+FROM mysql:5.7
+
+# Adicionando os scripts SQL para serem executados na criação do banco
+COPY ./script_banco.sql /docker-entrypoint-initdb.d/
+
+#CMD [ "mysql -u callicoder --password=callicoder < script_banco.sql"]
