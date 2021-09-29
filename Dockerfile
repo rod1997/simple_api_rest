@@ -1,5 +1,5 @@
 FROM openjdk
 
-COPY  ./ /
+COPY  target/apibank-0.0.1-SNAPSHOT.jar /app.jar
 
-ENTRYPOINT ["./mvnw","spring-boot:run"]
+ENTRYPOINT ["java","-jar","app.jar"]

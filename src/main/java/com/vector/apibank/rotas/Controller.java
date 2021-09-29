@@ -1,4 +1,4 @@
-package com.vector.apibank.rotas.Router;
+package com.vector.apibank.rotas;
 
 import com.vector.apibank.tipos.Cliente;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
