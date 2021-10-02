@@ -18,22 +18,34 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControllerHorarioPonto {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    ModelHorarioPonto objEmpresa;
+    ModelHorarioPonto objModalHorarioPonto;
 
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public List<Map<String,Object>>  listarEmpresa(){
 
-        return objEmpresa.listarHorarioPonto();
+        return objModalHorarioPonto.listarHorarioPonto();
     }
 
     @RequestMapping(value = "/criar", method = RequestMethod.POST)
-    public ResponseEntity<String>  criarEmpresa(@RequestBody HorarioPonto novaHorarioPonto){
+    public ResponseEntity<String>  criarHorarioPonto(@RequestBody HorarioPonto objHorarioPonto)throws IllegalArgumentException, IllegalAccessException{
 
-    
-        int last_id = objEmpresa.criarHorarioPonto(novaHorarioPonto);
+        int last_id = objModalHorarioPonto.criarHorarioPonto(objHorarioPonto);
+
+        return new ResponseEntity<>("id inserido: "+ Integer.toString(last_id), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/editar", method = RequestMethod.POST)
+    public ResponseEntity<String>  editarHorarioPonto(@RequestBody HorarioPonto objHorarioPonto)throws IllegalArgumentException, IllegalAccessException{
+
+        int last_id = objModalHorarioPonto.editarHorarioPonto(objHorarioPonto);
+
+        return new ResponseEntity<>("id inserido: "+ Integer.toString(last_id), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/excluir", method = RequestMethod.POST)
+    public ResponseEntity<String>  excluirHorarioPonto(@RequestBody HorarioPonto objHorarioPonto)throws IllegalArgumentException, IllegalAccessException{
+
+        int last_id = objModalHorarioPonto.excluirHorarioPonto(objHorarioPonto);
 
         return new ResponseEntity<>("id inserido: "+ Integer.toString(last_id), HttpStatus.OK);
     }

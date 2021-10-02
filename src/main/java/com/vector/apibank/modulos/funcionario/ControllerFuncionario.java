@@ -16,22 +16,36 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/funcionario")
 
 public class ControllerFuncionario {
-    @Autowired
-    JdbcTemplate jdbcTemplate;
 
     @Autowired
-    ModelFuncionario objEmpresa;
+    ModelFuncionario objModalFuncionario;
 
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public List<Map<String,Object>>  listarEmpresa(){
 
-        return objEmpresa.listarFuncionario();
+        return objModalFuncionario.listarFuncionario();
     }
 
     @RequestMapping(value = "/criar", method = RequestMethod.POST)
-    public ResponseEntity<String>  criarEmpresa(@RequestBody Funcionario novoFuncionario){
-        
-        int last_id = objEmpresa.criarFuncionario(novoFuncionario);
+    public ResponseEntity<String>  criarFuncionario(@RequestBody Funcionario objFuncionario)throws IllegalArgumentException, IllegalAccessException{
+
+        int last_id = objModalFuncionario.criarFuncionario(objFuncionario);
+
+        return new ResponseEntity<>("id inserido: "+ Integer.toString(last_id), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/editar", method = RequestMethod.POST)
+    public ResponseEntity<String>  editarFuncionario(@RequestBody Funcionario objFuncionario)throws IllegalArgumentException, IllegalAccessException{
+
+        int last_id = objModalFuncionario.editarFuncionario(objFuncionario);
+
+        return new ResponseEntity<>("id inserido: "+ Integer.toString(last_id), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/excluir", method = RequestMethod.POST)
+    public ResponseEntity<String>  excluirFuncionario(@RequestBody Funcionario objFuncionario)throws IllegalArgumentException, IllegalAccessException{
+
+        int last_id = objModalFuncionario.excluirFuncionario(objFuncionario);
 
         return new ResponseEntity<>("id inserido: "+ Integer.toString(last_id), HttpStatus.OK);
     }
