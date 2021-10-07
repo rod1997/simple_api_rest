@@ -10,9 +10,7 @@ import java.lang.IllegalArgumentException;
 
 public abstract class Model {
 
-    /**
-     * Retorno os nomes atributos com o interrogacao e o array com os atributos do objeto  nao nulos
-     */
+  
     public ArrayList<Object> dados_insecao;
 
     final public String ControiQueryeArrayListParaUpdate(Object objetoGenerico)throws IllegalArgumentException, IllegalAccessException{

@@ -30,6 +30,15 @@ CREATE TABLE horario_ponto(
     excluido datetime
 );
 
+CREATE TABLE usuario(
+
+    id int(10) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    username varchar(50) NOT NULL,
+    senha varchar(200)
+);
+
+
+INSERT INTO usuario(username,senha) values("callicoder","123456");
 
 INSERT INTO empresa(nome,cnpj) values("ffff 1 test","54545.54.54/454");
 INSERT INTO empresa(nome,cnpj) values("ffff 2 test","4548.54.45/5454");
